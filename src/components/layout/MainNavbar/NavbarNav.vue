@@ -35,7 +35,7 @@
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle text-nowrap px-3" v-d-toggle.user-actions>
-        <img class="user-avatar rounded-circle mr-2" src="@/assets/images/avatars/0.jpg" alt="User Avatar"> <span class="d-none d-md-inline-block">Maria Jose</span>
+        <img class="user-avatar rounded-circle mr-2" src="admin.png" alt="User Avatar"> <span class="d-none d-md-inline-block">Admin</span>
       </a>
       <d-collapse id="user-actions" class="dropdown-menu dropdown-menu-small">
         <d-dropdown-item><i class="material-icons">&#xE7FD;</i> Perfil</d-dropdown-item>

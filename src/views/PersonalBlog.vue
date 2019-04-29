@@ -25,23 +25,6 @@
         <bo-users-by-device />
       </d-col>
     </d-row>
-
-    <d-row>
-      <!-- New Draft -->
-      <d-col lg="4" md="6" sm="12" class="mb-4">
-        <bo-new-draft />
-      </d-col>
-
-      <!-- Discussions -->
-      <d-col lg="5" md="12" sm="12" class="mb-4">
-        <bo-discussions @approve="handleApprove" @reject="handleReject" @edit="handleEdit" @view-all-comments="handleViewAllComments" />
-      </d-col>
-
-      <!-- Top Referrals -->
-      <d-col lg="3" md="12" sm="12" class="mb-4">
-        <bo-top-referrals />
-      </d-col>
-    </d-row>
   </d-container>
 </template>
 

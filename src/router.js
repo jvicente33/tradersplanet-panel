@@ -1,6 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+//Login
+import Login from './layouts/Login.vue';
+
+//Dashboard
+import Dashboard from './layouts/Default.vue';
+
+//Views
 import PersonalBlog from './views/PersonalBlog.vue';
 import UserProfileLite from './views/UserProfileLite.vue';
 import AddNewPost from './views/AddNewPost.vue';
@@ -12,8 +19,8 @@ import BlogPosts from './views/BlogPosts.vue';
 Vue.use(Router);
 
 export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  //mode: 'history',
+  //base: process.env.BASE_URL,
   linkActiveClass: 'active',
   linkExactActiveClass: 'exact-active',
   scrollBehavior() {
@@ -22,43 +29,57 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/blog-overview',
+      redirect: 'login',
     },
     {
-      path: '/blog-overview',
-      name: 'blog-overview',
-      component: PersonalBlog,
+      path: '/login',
+      name: 'login',
+      component: Login,
     },
     {
-      path: '/user-profile-lite',
-      name: 'user-profile-lite',
-      component: UserProfileLite,
+      path: '/dashboard',
+      name: 'dashboard',
+      redirect: '/dashboard/blog-overview',
+      component: Dashboard,
+      children: [
+        {
+          path: 'blog-overview',
+          name: 'blog-overview',
+          component: PersonalBlog,
+        },
+        {
+          path: 'user-profile-lite',
+          name: 'user-profile-lite',
+          component: UserProfileLite,
+        },
+        {
+          path: 'add-new-post',
+          name: 'add-new-post',
+          component: AddNewPost,
+        },
+        {
+          path: 'errors',
+          name: 'errors',
+          component: Errors,
+        },
+        {
+          path: 'components-overview',
+          name: 'components-overview',
+          component: ComponentsOverview,
+        },
+        {
+          path: 'tables',
+          name: 'tables',
+          component: Tables,
+        },
+        {
+          path: 'blog-posts',
+          name: 'blog-posts',
+          component: BlogPosts,
+        }
+      ]
     },
-    {
-      path: '/add-new-post',
-      name: 'add-new-post',
-      component: AddNewPost,
-    },
-    {
-      path: '/errors',
-      name: 'errors',
-      component: Errors,
-    },
-    {
-      path: '/components-overview',
-      name: 'components-overview',
-      component: ComponentsOverview,
-    },
-    {
-      path: '/tables',
-      name: 'tables',
-      component: Tables,
-    },
-    {
-      path: '/blog-posts',
-      name: 'blog-posts',
-      component: BlogPosts,
-    }, {
+    , {
       path: '*',
       redirect: '/errors',
     },

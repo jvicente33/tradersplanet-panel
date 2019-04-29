@@ -10,7 +10,7 @@
         <main-navbar />
 
         <!-- Content -->
-        <slot />
+        <router-view></router-view>
 
         <!-- Main Footer -->
         <main-footer />
