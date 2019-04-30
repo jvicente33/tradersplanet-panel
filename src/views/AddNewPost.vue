@@ -94,8 +94,6 @@
 </template>
 
 <script>
-import SidebarActions from "@/components/add-new-post/SidebarActions.vue";
-import SidebarCategories from "@/components/add-new-post/SidebarCategories.vue";
 import Quill from "quill";
 
 import "quill/dist/quill.snow.css";
@@ -108,8 +106,6 @@ export default {
     };
   },
   components: {
-    anpSidebarActions: SidebarActions,
-    anpSidebarCategories: SidebarCategories
   },
   mounted() {
     this.initQuill();

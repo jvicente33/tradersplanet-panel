@@ -9,7 +9,7 @@ const app = express();
 app.use(express.static(__dirname + '/dist/'));
 
 //DB
-require('./src/server/config/db')
+//require('./src/server/config/db')
 
 //Config
 app.use(cors());
