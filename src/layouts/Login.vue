@@ -17,7 +17,8 @@
                 icon="user"
                 maxlength="12"
                 min="5"
-                rounded>
+                rounded
+                v-model="username">
             </b-input>
         </b-field>
 
@@ -27,12 +28,13 @@
                 icon-pack="fas"
                 icon="key"
                 password-reveal
-                rounded>
+                rounded
+                v-model="password">
             </b-input>
         </b-field>
 
         <div class="has-text-centered">
-          <a @click="go('dashboard')" class="button is-vcentered is-primary is-outlined is-rounded">Iniciar Sesión</a>
+          <a @click="login()" class="button is-vcentered is-primary is-outlined is-rounded">Iniciar Sesión</a>
         </div>
         <!--<div class="has-text-centered">
           <a @click="changeShow(2)">Registrar</a>
@@ -116,12 +118,15 @@
 
 <script>
 
+import axios from '../config/axios.js'
 
 export default {
   name: "login",
   data() {
     return {
-      show: 1
+      show: 1,
+      username: '',
+      password: ''
     };
   },
   methods: {
@@ -153,6 +158,26 @@ export default {
         }
 
         return aux;
+    },
+
+    async login(){
+      let aux = await axios.post('/user/login', {
+        username: this.username, 
+        password: this.password
+      })
+      console.log(aux)
+      if(aux.data.response){
+        this.go('dashboard')
+      }else{
+        this.$dialog.alert({
+            title: 'Error',
+            message: 'No pudo iniciar, por favor verifique sus datos',
+            type: 'is-danger',
+            hasIcon: true,
+            icon: 'times-circle',
+            iconPack: 'fas'
+        })
+      }
     }
 
 
