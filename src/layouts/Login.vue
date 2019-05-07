@@ -159,19 +159,18 @@ export default {
 
         return aux;
     },
-
     async login(){
       let aux = await axios.post('/user/login', {
         username: this.username, 
         password: this.password
       })
-      console.log(aux)
       if(aux.data.response){
+        this.$cookie.set('username', username, { expires: '1D' })
         this.go('dashboard')
       }else{
         this.$dialog.alert({
             title: 'Error',
-            message: 'No pudo iniciar, por favor verifique sus datos',
+            message: aux.data.message,
             type: 'is-danger',
             hasIcon: true,
             icon: 'times-circle',

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-//const MONGO_URL = 'mongodb://admin:admin1234@ds147890.mlab.com:47890/tradersplanet'
-const MONGO_URL = 'mongodb://localhost:27017/tradersplanet'
+const MONGO_URL = 'mongodb://admin:admin1234@ds147890.mlab.com:47890/tradersplanet'
+//const MONGO_URL = 'mongodb://localhost:27017/tradersplanet'
 
 mongoose.connect(MONGO_URL);
 mongoose.connection.on("connected", () => {
