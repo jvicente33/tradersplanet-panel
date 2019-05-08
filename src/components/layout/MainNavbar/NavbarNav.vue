@@ -35,18 +35,31 @@
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle text-nowrap px-3" v-d-toggle.user-actions>
-        <img class="user-avatar rounded-circle mr-2" src="admin.png" alt="User Avatar"> <span class="d-none d-md-inline-block">Admin</span>
+        <img class="user-avatar rounded-circle mr-2" src="admin.png" alt="User Avatar"> 
+        <span class="d-none d-md-inline-block">{{this.$cookie.get('username')}}</span>
       </a>
       <d-collapse id="user-actions" class="dropdown-menu dropdown-menu-small">
         <d-dropdown-item><i class="material-icons">&#xE7FD;</i> Perfil</d-dropdown-item>
         <d-dropdown-divider />
-        <d-dropdown-item href="#" class="text-danger">
-          <i class="material-icons text-danger">&#xE879;</i> Salir
+        <d-dropdown-item class="text-danger">
+          <a @click="logout()"><i class="material-icons text-danger">&#xE879;</i> Salir</a>
         </d-dropdown-item>
       </d-collapse>
     </li>
   </d-navbar-nav>
 </template>
+
+<script>
+export default {
+  methods:{
+    logout(){
+     this.$router.push({ name: 'login' }); 
+     this.$cookie.delete('username')
+    }
+  }
+}
+</script>
+
 
 <style>
   .nav-link:hover {

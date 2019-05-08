@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
+//Cookie
+import Cookies  from 'cookies-js'
+
 //Login
 import Login from './layouts/Login.vue';
 
@@ -18,7 +21,7 @@ import BlogPosts from './views/BlogPosts.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   //mode: 'history',
   //base: process.env.BASE_URL,
   linkActiveClass: 'active',
@@ -30,52 +33,64 @@ export default new Router({
     {
       path: '/',
       redirect: 'login',
+      meta: {
+        isAuth: true,
+        requiredAuth: false
+      }
     },
     {
       path: '/login',
       name: 'login',
-      component: Login,
+      component: Login
     },
     {
       path: '/dashboard',
       name: 'dashboard',
       redirect: '/dashboard/blog-overview',
       component: Dashboard,
+      meta: {
+        requiredAuth: true
+      },
       children: [
         {
           path: 'blog-overview',
           name: 'blog-overview',
           component: PersonalBlog,
+          meta: {
+            requiredAuth: true
+          }
         },
         {
           path: 'user-profile-lite',
           name: 'user-profile-lite',
           component: UserProfileLite,
+          meta: {
+            requiredAuth: true
+          }
         },
         {
           path: 'add-new-post',
           name: 'add-new-post',
           component: AddNewPost,
-        },
-        {
-          path: 'errors',
-          name: 'errors',
-          component: Errors,
+          meta: {
+            requiredAuth: true
+          }
         },
         {
           path: 'components-overview',
           name: 'components-overview',
           component: ComponentsOverview,
-        },
-        {
-          path: 'tables',
-          name: 'tables',
-          component: Tables,
+          meta: {
+            requiredAuth: true
+          }
         },
         {
           path: 'blog-posts',
           name: 'blog-posts',
           component: BlogPosts,
+          meta: {
+            requiredAuth: true
+          }
         }
       ]
     },
@@ -85,3 +100,32 @@ export default new Router({
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+
+  if (to.meta.requiredAuth) {
+    let userId = Cookies.get('username')
+    let isAuthUser = userId != undefined ? true : false
+    if (isAuthUser) {
+      next()
+    } else {
+      router.push('/')
+    }
+  } else {
+    next()
+  }
+
+  if (to.meta.isAuth) {
+    let userId = Cookies.get('username')
+    let isAuthUser = userId != undefined ? true : false
+    if (isAuthUser) {
+      router.push('/panel')
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+})
+
+export default router

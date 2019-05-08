@@ -165,7 +165,7 @@ export default {
         password: this.password
       })
       if(aux.data.response){
-        this.$cookie.set('username', username, { expires: '1D' })
+        this.$cookie.set('username', this.username, { expires: '1D' })
         this.go('dashboard')
       }else{
         this.$dialog.alert({
