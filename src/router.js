@@ -14,10 +14,9 @@ import Dashboard from './layouts/Default.vue';
 import PersonalBlog from './views/PersonalBlog.vue';
 import UserProfileLite from './views/UserProfileLite.vue';
 import AddNewPost from './views/AddNewPost.vue';
-import Errors from './views/Errors.vue';
 import ComponentsOverview from './views/ComponentsOverview.vue';
-import Tables from './views/Tables.vue';
 import BlogPosts from './views/BlogPosts.vue';
+import AddNewEducation from './views/AddNewEducation.vue';
 
 Vue.use(Router);
 
@@ -88,6 +87,16 @@ const router = new Router({
           path: 'blog-posts',
           name: 'blog-posts',
           component: BlogPosts,
+          meta: {
+            requiredAuth: true
+          }
+        },
+
+        //J. Daza
+        {
+          path: 'add-new-education',
+          name: 'add-new-education',
+          component: AddNewEducation,
           meta: {
             requiredAuth: true
           }
