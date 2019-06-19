@@ -29,7 +29,7 @@
           </div>
           <d-card-body>
             <h5 class="card-title">
-              <a class="text-fiord-blue">{{ post.title }}</a> -
+              <a class="text-fiord-blue">{{ post.title.substring(0,15) }}</a> -
               <span class="text-muted">{{ post.date }}</span>
             </h5>
             <p class="card-text d-inline-block mb-3">{{ post.content }}... </p> 
@@ -86,14 +86,14 @@ export default {
   methods: {
     async listPost() {
       try {
-        let posts = await axios.get("/post/all");
+        let posts = await axios.post("/post/all", {});
         let temp = posts.data.posts.map(function(post) {
           return {
             backgroundImage: require("@/assets/images/default-image.png"),
             public: post.public ? "Publico" : "Privado",
             categoryTheme: post.public ? "info" : "dark",
             author: post.author,
-            authorAvatar: require("@/assets/images/avatars/admin.png"),
+            authorAvatar: require("@/assets/images/avatars/majo.png"),
             title: post.title,
             content: post.contentText.toString().substring(0, 20),
             contentFull: post.contentText,

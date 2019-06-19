@@ -25,7 +25,7 @@ module.exports = {
 
     async findAllPost(req, res){
         try {
-            let posts = await PostModel.find({})
+            let posts = await PostModel.find(req.body)
             return res.status(200).json({
                 info: 'success',
                 message: 'Publicaciones encontradas',

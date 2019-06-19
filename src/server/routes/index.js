@@ -33,7 +33,7 @@ router.put('/education/:id', educationController.editEducation)
  */
 
 router.post('/post/create', postController.create)
-router.get('/post/all', postController.findAllPost)
+router.post('/post/all', postController.findAllPost)
 router.get('/post/:id', postController.findPost)
 router.put('/post/:id', postController.editPost)
 

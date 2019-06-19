@@ -146,7 +146,7 @@ export default {
     },
     async save(isPublic) {
       try {
-        this.isLoading = true
+        this.isLoading = true;
 
         let converter = new QuillDeltaToHtmlConverter(
           this.editor.getContents().ops,
@@ -164,21 +164,23 @@ export default {
         };
 
         let post = await axios.post("/post/create", data);
-        this.isLoading = false
+        this.isLoading = false;
         this.$toast.open({
-            message: post.data.message,
-            type: `is-success`,
-            position: 'is-bottom'
-        })
-        
+          message: post.data.message,
+          type: `is-success`,
+          position: "is-bottom"
+        });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       } catch (error) {
         console.log(error);
-        this.isLoading = false
+        this.isLoading = false;
         this.$toast.open({
-            message: post.data.message,
-            type: `is-danger`,
-            position: 'is-bottom'
-        })
+          message: post.data.message,
+          type: `is-danger`,
+          position: "is-bottom"
+        });
       }
     }
   }

@@ -35,7 +35,7 @@
     </li>
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle text-nowrap px-3" v-d-toggle.user-actions>
-        <img class="user-avatar rounded-circle mr-2" src="admin.png" alt="User Avatar"> 
+        <img class="user-avatar rounded-circle mr-2" src="majo.png" alt="User Avatar"> 
         <span class="d-none d-md-inline-block">{{this.$cookie.get('username')}}</span>
       </a>
       <d-collapse id="user-actions" class="dropdown-menu dropdown-menu-small">
