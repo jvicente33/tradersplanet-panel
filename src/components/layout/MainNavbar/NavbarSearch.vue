@@ -4,7 +4,7 @@
             <d-input-group-text slot="prepend">
                 <i class="material-icons">search</i>
             </d-input-group-text>
-            <d-input class="navbar-search" placeholder="Search for something..." />
+            <d-input class="navbar-search" placeholder="Buscar un articulo.." />
         </d-input-group>
     </d-form>
 </template>

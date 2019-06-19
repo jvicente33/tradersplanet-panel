@@ -9,6 +9,7 @@ const router = express.Router();
 //Controllers
 const userController = require('../controllers/user.ctrl')
 const educationController = require('../controllers/education.ctrl')
+const postController = require('../controllers/post.ctrl')
 
 /**
  * Users
@@ -26,5 +27,14 @@ router.post('/education/create', educationController.create)
 router.get('/education/all', educationController.findAllEducation)
 router.get('/education/:id', educationController.findEducation)
 router.put('/education/:id', educationController.editEducation)
+
+/**
+ * Education
+ */
+
+router.post('/post/create', postController.create)
+router.get('/post/all', postController.findAllPost)
+router.get('/post/:id', postController.findPost)
+router.put('/post/:id', postController.editPost)
 
 module.exports = router
